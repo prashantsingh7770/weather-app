@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">WeatherApp</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#forecast">Forecast</a></li>
+            <li><a href="#map">Map</a></li>
+            <li><a href="#settings">Settings</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h1><span>Weather App</span></h1>
+        <form action="#">
+            <input id="city-name" type="text" placeholder="Enter your city name">
+           <button onclick="voice()" id="mic-btn"><img src="./microphone-solid.svg" alt="mic" id="textToSpeech" width="35px"></button> 
+            <button id="btn">Search</button>
+        </form>
+        <div class="weather-data">
+            <div class="icon">
+                <!-- <img src="" alt=""> -->
+            </div>
+            <div class="temp"></div>
+            <div class="desc"></div>
+            <!-- <div class="temp">35°C</div>
+            <div class="desc">haze</div> -->
+
+            <div class="details">
+                <!-- <div>Feels Like: 35°C</div>
+                <div>Humidity: 45%</div>
+                <div>Wind Speed: 5 m/s</div> -->
+                <div class="feels_like"></div>
+                <div class="humidity"></div>
+                <div class="wind-speed"></div>
+            
+            </div>
+            <!-- <div class="details">
+                <div class="feels_like"></div>
+                <div class="humidity"></div>
+                <div class="wind-speed"></div>
+            
+            </div> -->
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 WeatherApp. All rights reserved. | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+    </div>
+
+    <script src="./script.js"></script>
+    <script>
+        function voice(){
+            var recognition = new webkitSpeechRecognition();
+            recognition.lang='en-GB'
+            recognition.onresult=function(event){
+                document.getElementById('city-name').value =  event.results[0][0].transcript;
+            }
+            recognition.start();
+        }
+        </script>
+    </body>
+
+</body>
+</html>
